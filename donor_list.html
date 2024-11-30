@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor List</title>
+    <link rel="stylesheet" href="styles19.css">
+</head>
+<body>
+    <header>
+        <h1>Donor List</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="become_donor.html">Become a Donor</a></li>
+                <li><a href="need_blood.html">Need Blood</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>List of Donors</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Blood Type</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th>Medical History</th>
+                    <th>Bad Habits</th>
+                </tr>
+            </thead>
+            <tbody id="donor-list">
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>&copy; 2024 Blood Bank Management System</p>
+    </footer>
+    <script>
+        const donors = [
+            { id: 1, name: 'John Deep', bloodType: 'A+', age: 30, contact: '123-456-7890', email: 'john.doe@example.com', location: 'New York', medicalHistory: 'None', badHabits: 'Smoking' },
+            { id: 2, name: 'Will Smith', bloodType: 'O-', age: 40, contact: '234-567-8901', email: 'will.smith@example.com', location: 'Los Angeles', medicalHistory: 'Hypertension', badHabits: 'None' },
+            { id: 3, name: 'Robert Jr', bloodType: 'B+', age: 35, contact: '345-678-9012', email: 'robert.j@example.com', location: 'Chicago', medicalHistory: 'Diabetes', badHabits: 'Alcohol' },
+            { id: 4, name: 'Emily', bloodType: 'AB-', age: 28, contact: '456-789-0123', email: 'emily.d@example.com', location: 'Houston', medicalHistory: 'None', badHabits: 'None' },
+            { id: 5, name: 'Michael', bloodType: 'O+', age: 45, contact: '567-890-1234', email: 'michael.b@example.com', location: 'Phoenix', medicalHistory: 'Asthma', badHabits: 'Smoking' },
+            { id: 6, name: 'Jessica', bloodType: 'A-', age: 33, contact: '678-901-2345', email: 'jessica.w@example.com', location: 'Philadelphia', medicalHistory: 'None', badHabits: 'None' },
+            { id: 7, name: 'Daniel', bloodType: 'B-', age: 29, contact: '789-012-3456', email: 'daniel.m@example.com', location: 'San Antonio', medicalHistory: 'Heart Surgery', badHabits: 'None' },
+            { id: 8, name: 'Jack White', bloodType: 'A+', age: 37, contact: '890-123-4567', email: 'jack.w@example.com', location: 'San Diego', medicalHistory: 'None', badHabits: 'None' },
+            { id: 9, name: 'Martin', bloodType: 'AB+', age: 42, contact: '901-234-5678', email: 'martin@example.com', location: 'Dallas', medicalHistory: 'Lung Surgery', badHabits: 'Smoking' },
+            { id: 10, name: 'Taylor', bloodType: 'O-', age: 25, contact: '012-345-6789', email: 'taylor.t@example.com', location: 'San Jose', medicalHistory: 'None', badHabits: 'None' },
+            { id: 11, name: 'Rishi', bloodType: 'A+', age: 34, contact: '123-456-7890', email: 'rishi.a@example.com', location: 'Madurai', medicalHistory: 'None', badHabits: 'None' },
+            { id: 12, name: 'Arun', bloodType: 'O+', age: 19, contact: '234-567-8901', email: 'arun.t@example.com', location: 'Chennai', medicalHistory: 'Forearm Surgery', badHabits: 'None' }
+        ];
+
+        const donorList = document.getElementById('donor-list');
+
+        donors.forEach(donor => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${donor.id}</td>
+                <td>${donor.name}</td>
+                <td>${donor.bloodType}</td>
+                <td>${donor.age}</td>
+                <td>${donor.contact}</td>
+                <td>${donor.email}</td>
+                <td>${donor.location}</td>
+                <td>${donor.medicalHistory}</td>
+                <td>${donor.badHabits}</td>
+            `;
+            donorList.appendChild(row);
+        });
+    </script>
+</body>
+</html>

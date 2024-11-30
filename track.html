@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Blood Request</title>
+    <link rel="stylesheet" href="styles19.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #b30000;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-container input {
+            padding: 8px;
+            width: 50%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .pending {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        .completed {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .cancelled {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Track Your Blood Request</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="become_donor.html">Become a Donor</a></li>
+                <li><a href="need_blood.html">Need Blood</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Track Your Request</h2>
+        <div class="search-container">
+            <label for="request-id">Enter Your Request ID:</label>
+            <input type="text" id="request-id" placeholder="Enter Request ID to track">
+            <button onclick="trackRequest()">Track</button>
+        </div>
+
+        <table id="request-table">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Donor Name</th>
+                    <th>Blood Type</th>
+                    <th>Status</th>
+                    <th>Request Date</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>John Deep</td>
+                    <td>A+</td>
+                    <td class="status pending">Pending</td>
+                    <td>2024-11-20</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Will Smith</td>
+                    <td>O-</td>
+                    <td class="status completed">Completed</td>
+                    <td>2024-11-15</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Emily Davis</td>
+                    <td>AB-</td>
+                    <td class="status cancelled">Cancelled</td>
+                    <td>2024-11-18</td>
+                    <td>Houston</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Michael Johnson</td>
+                    <td>O+</td>
+                    <td class="status pending">Pending</td>
+                    <td>2024-11-22</td>
+                    <td>Phoenix</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Blood Bank Management System</p>
+    </footer>
+
+    <script>
+        function trackRequest() {
+            const requestId = document.getElementById('request-id').value;
+            const rows = document.querySelectorAll('#request-table tbody tr');
+            let found = false;
+
+            rows.forEach(row => {
+                const idCell = row.cells[0].textContent;
+                if (idCell === requestId) {
+                    row.style.backgroundColor = "#e0f7fa";
+                    found = true;
+                } else {
+                    row.style.backgroundColor = "";
+                }
+            });
+
+            if (!found) {
+                alert('Request ID not found.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Need Blood</title>
+    <link rel="stylesheet" href="styles19.css">
+</head>
+<body>
+    <header>
+        <h1>Need Blood?</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="become_donor.html">Become a Donor</a></li>
+                <li><a href="need_blood.html">Need Blood</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Request for Blood</h2>
+        <form action="blood_request.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <label for="blood_type">Blood Type:</label>
+            <input type="text" id="blood_type" name="blood_type" placeholder="Enter your blood type" required>
+
+            <label for="reason">Reason for Request:</label>
+            <textarea id="reason" name="reason" placeholder="Enter the reason for blood request" required></textarea>
+
+            <label for="required_time">Blood Required In:</label>
+            <input type="time" id="required_time" name="required_time" required>
+            
+            <input type="submit" value="Request Blood">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Delivery Status</h2>
+        <p>Check the current status of your blood delivery request.</p>
+        <a href="delivery_status.html" class="button">View Delivery Status</a>
+    </div>
+
+    <div class="container">
+        <h2>Blood Availability</h2>
+        <p>Find out the availability of specific blood types in our blood bank.</p>
+        <a href="availability.html" class="button">Check Availability</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Blood Bank Management System</p>
+    </footer>
+</body>
+</html>

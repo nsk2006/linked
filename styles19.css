@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e6f7ff; 
+  margin: 0;
+  padding: 0;
+  color: #333; 
+}
+
+header {
+  background-color: #b30000; 
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main Section */
+section {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(179, 0, 0, 0.2);
+  text-align: center;
+}
+
+section h2 {
+  color: #b30000; 
+  margin-top: 0;
+}
+
+footer {
+  background-color: #b30000; 
+  color: white;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #cce7ff; 
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #b30000; 
+  color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #cce7ff; 
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #e6f7ff; 
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(179, 0, 0, 0.2);
+  color: #333;
+}
+
+/* Additional Columns Styling */
+th, td {
+  text-align: center; /* Align new columns */
+}
+
+th:nth-child(4), td:nth-child(4),
+th:nth-child(8), td:nth-child(8),
+th:nth-child(9), td:nth-child(9) {
+  width: 10%; /* Set a width for specific columns */
+}
+
+td {
+  font-size: 14px;
+}

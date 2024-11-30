@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Chat Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #b30000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .chat-container {
+            width: 90%;
+            max-width: 500px;
+            margin: 20px auto;
+            border: 2px solid #b30000;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #cce7ff;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+        }
+
+        .chat-box .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .chat-box .user {
+            background-color: #cce7ff;
+            text-align: right;
+        }
+
+        .chat-box .bot {
+            background-color: #e6f7ff;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cce7ff;
+            border-radius: 5px;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            background-color: #b30000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-container button:hover {
+            background-color: #800000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blood Bank Chat Assistant</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="become_donor.html">Become a Donor</a></li>
+                <li><a href="need_blood.html">Need Blood</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+        
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message here...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+
+        const responses = {
+            greeting: "Hello! Welcome to the Blood Bank Management System. How can I assist you today?",
+            bloodRequest: `You can request blood by visiting the <a href="need_blood.html">Need Blood</a> page.`,
+            donorInfo: `To become a donor, please visit the <a href="become_donor.html">Become a Donor</a> page or register directly through the <a href="dashboard.html">Dashboard</a>.`,
+            contact: `You can contact us at +1-234-567-890 or email us at <a href="mailto:support@bloodbank.com">support@bloodbank.com</a>.`,
+            about: `Learn more about us on the <a href="about.html">About Us</a> page.`,
+            compatibility: "Blood type compatibility depends on ABO and Rh factors; O-negative is universal, and AB-positive can receive any type.",
+            donationFrequency: "Whole blood can be donated every 56 days; platelets every 7 days, up to 24 times a year.",
+            donationLocation: "Use local blood bank locators or visit hospitals, blood drives, or Red Cross centers.",
+            home: `Go back to the main page: <a href="index.html">Home</a>.`,
+            default: "I'm sorry, I didn't understand that. Can you please rephrase your question?"
+        };
+
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            addMessage(userInput, 'user');
+
+            let botResponse = "";
+            if (userInput.toLowerCase().includes('hello') || userInput.toLowerCase().includes('hi')) {
+                botResponse = responses.greeting;
+            } else if (userInput.toLowerCase().includes('request blood')) {
+                botResponse = responses.bloodRequest;
+            } else if (userInput.toLowerCase().includes('donor') || userInput.toLowerCase().includes('become donor')) {
+                botResponse = responses.donorInfo;
+            } else if (userInput.toLowerCase().includes('contact')) {
+                botResponse = responses.contact;
+            } else if (userInput.toLowerCase().includes('about')) {
+                botResponse = responses.about;
+            } else if (userInput.toLowerCase().includes('blood type')) {
+                botResponse = responses.compatibility;
+            } else if (userInput.toLowerCase().includes('how often') || userInput.toLowerCase().includes('frequency')) {
+                botResponse = responses.donationFrequency;
+            } else if (userInput.toLowerCase().includes('where can i donate') || userInput.toLowerCase().includes('near me')) {
+                botResponse = responses.donationLocation;
+            } else if (userInput.toLowerCase().includes('home')) {
+                botResponse = responses.home;
+            } else {
+                botResponse = responses.default;
+            }
+
+            setTimeout(() => {
+                addMessage(botResponse, 'bot');
+            }, 500);
+
+            document.getElementById('user-input').value = '';
+        }
+
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.innerHTML = message;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
